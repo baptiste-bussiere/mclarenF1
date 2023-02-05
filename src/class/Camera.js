@@ -16,9 +16,12 @@ export default class Camera {
             // this.setControls()
         if (this.debug.active) {
             this.debugFolder = this.debug.ui.addFolder("Camera")
-            this.debugFolder.add(this.instance.position, 'x', 0, 1, ).name("name");
-            this.debugFolder.add(this.instance.position, 'y', 0, 1).name("name")
-            this.debugFolder.add(this.instance.position, 'z', 0, 1);
+            this.debugFolder.add(this.instance.position, 'x', -10, 10).name("Position X")
+            this.debugFolder.add(this.instance.position, 'y', -10, 10).name("Position Y")
+            this.debugFolder.add(this.instance.position, 'z', -10, 10).name("Position Z")
+            this.debugFolder.add(this.instance.rotation, 'x', -10, 10).name("Rotation X")
+            this.debugFolder.add(this.instance.rotation, 'y', -10, 10).name("Rotation Y")
+            this.debugFolder.add(this.instance.rotation, 'z', -10, 10).name("Rotation Z")
 
 
         }
@@ -31,7 +34,8 @@ export default class Camera {
             0.1,
             300
         )
-        this.instance.position.set(10, 2, 1)
+        this.instance.position.set(0, 4, -2)
+        this.instance.rotation.set(-1.8, 0, 1.57)
         this.scene.add(this.instance)
         this.pivot = new THREE.Vector3()
         this.instance.getWorldDirection(this.pivot)
@@ -51,7 +55,6 @@ export default class Camera {
     }
 
     update() {
-        console.log(this.instance.position);
 
         // this.controls.update()
     }

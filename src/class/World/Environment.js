@@ -10,13 +10,21 @@ export default class Environment {
         this.debug = this.experience.debug
         this.scene.fog = new THREE.Fog(0xb3d7f1, 0.2, 125)
         this.ressource = this.resources.items.hdriMap
-            // Debug
-        if (this.debug.active) {
-            this.debugFolder = this.debug.ui.addFolder("environment")
-        }
+            // Debug     
+        console.log(this.sunLight);
+        this.setHdri()
+
+        console.log(this.hdrMap);
 
         this.setSunLight()
-        this.setHdri()
+        if (this.debug.active) {
+            this.debugFolder = this.debug.ui.addFolder("Environment")
+            this.debugFolder.addColor(this.sunLight, "color").name("Ambient Color");
+            // this.debugFolder.add(this.sunLight, "color").name("Ambient Color");
+
+        }
+
+
     }
 
     setSunLight() {

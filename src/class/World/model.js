@@ -29,4 +29,23 @@ export default class Model {
         console.log(this.model);
 
     }
+    setAnimation() {
+        gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".grid-container",
+                    start: "top top",
+                    end: () => innerHeight * 4,
+                    scrub: true,
+                    pin: ".grid",
+                    anticipatePin: 1
+                }
+            })
+            .set(".gridBlock:not(.centerBlock)", { autoAlpha: 0 })
+            .to(".gridBlock:not(.centerBlock)", { duration: 0.1, autoAlpha: 1 }, 0.001)
+            .from(".gridLayer", {
+                scale: 3.3333,
+                ease: "none",
+            });
+
+    }
 }
