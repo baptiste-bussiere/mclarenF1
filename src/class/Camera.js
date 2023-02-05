@@ -10,10 +10,18 @@ export default class Camera {
         this.scene = this.experience.scene
         this.canvas = this.experience.canvas
         this.camera = this.experience.camera
+        this.debug = this.experience.debug
 
         this.setInstance()
-        this.setControls()
+            // this.setControls()
+        if (this.debug.active) {
+            this.debugFolder = this.debug.ui.addFolder("Camera")
+            this.debugFolder.add(this.instance.position, 'x', 0, 1, ).name("name");
+            this.debugFolder.add(this.instance.position, 'y', 0, 1).name("name")
+            this.debugFolder.add(this.instance.position, 'z', 0, 1);
 
+
+        }
     }
 
     setInstance() {
@@ -23,7 +31,7 @@ export default class Camera {
             0.1,
             300
         )
-        this.instance.position.set(0, 0, 0)
+        this.instance.position.set(10, 2, 1)
         this.scene.add(this.instance)
         this.pivot = new THREE.Vector3()
         this.instance.getWorldDirection(this.pivot)
@@ -43,7 +51,8 @@ export default class Camera {
     }
 
     update() {
+        console.log(this.instance.position);
 
-        this.controls.update()
+        // this.controls.update()
     }
 }
