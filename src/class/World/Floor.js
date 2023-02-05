@@ -7,9 +7,7 @@ export default class Floor {
         this.scene = this.experience.scene
         this.resources = this.experience.resources
 
-        this.setGeometry()
-        this.setMaterial()
-        this.setMesh()
+
     }
 
     setGeometry() {

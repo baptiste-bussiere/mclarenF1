@@ -1,0 +1,11 @@
+@import "_font.scss";
+@import "_var.scss";
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

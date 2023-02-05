@@ -14,16 +14,19 @@ export default class Model {
         this.camera = this.experience.camera
         this.canvas = this.experience.canvas
         this.controls = this.experience.camera.controls
-        this.mclarenF1 = this.resources.items.mclarenF1
+        this.model = this.resources.items.mclarenF1
+        this.setModel()
     }
 
     update() {
-        // this.urbainRessource.scene.getObjectByName( this.instance.position
-        console.log(this.controls.target)
-        console.log(this.camera.instance.position)
 
-        // ).rotatation.x += 1
-        this.mixer.update(this.time.delta * 0.001)
-        this.mixerVeh.update(this.time.delta * 0.001)
+    }
+    setModel() {
+        this.model = this.model.scene
+        this.scene.add(this.model)
+        this.model.position.set(0, 0, 0)
+        this.model.rotation.set(0, 0, 0)
+        console.log(this.model);
+
     }
 }

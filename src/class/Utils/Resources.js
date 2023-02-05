@@ -34,11 +34,7 @@ export default class Resources extends EventEmitter {
         this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader)
         this.loaders.hdrEquirect = new RGBELoader()
         this.loadingManager.onLoad = function() {
-            gsap.to(".root", {
-                opacity: 0,
-                display: "none",
-                delay: 2
-            })
+            console.log('cest load');
         }
     }
     startLoading() {

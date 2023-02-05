@@ -26,6 +26,6 @@ export default class Environment {
     setHdri() {
         this.hdrMap = this.ressource
         this.hdrMap.mapping = THREE.EquirectangularReflectionMapping
-        this.scene.environment - this.hdrMap
+        this.scene.environment = this.hdrMap
     }
 }
