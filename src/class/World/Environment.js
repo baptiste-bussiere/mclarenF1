@@ -11,7 +11,6 @@ export default class Environment {
         this.scene.fog = new THREE.Fog(0xb3d7f1, 0.2, 125)
         this.ressource = this.resources.items.hdriMap
             // Debug     
-        console.log(this.sunLight);
         this.setHdri()
 
         console.log(this.hdrMap);

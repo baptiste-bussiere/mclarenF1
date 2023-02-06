@@ -1,7 +1,10 @@
 import * as THREE from "three"
 import Experience from "../Experience.js"
-import gsap from "gsap"
 import TweenMax from "gsap"
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import { TextureFilter } from "three"
 export default class Model {
     constructor() {
@@ -16,6 +19,18 @@ export default class Model {
         this.controls = this.experience.camera.controls
         this.model = this.resources.items.mclarenF1
         this.setModel()
+        this.setAnimation()
+        if (this.debug.active) {
+            this.debugFolder = this.debug.ui.addFolder("Model")
+            this.debugFolder.add(this.model.position, 'x', -10, 10).name("Position X")
+            this.debugFolder.add(this.model.position, 'y', -10, 10).name("Position Y")
+            this.debugFolder.add(this.model.position, 'z', -10, 10).name("Position Z")
+            this.debugFolder.add(this.model.rotation, 'x', -10, 10).name("Rotation X")
+            this.debugFolder.add(this.model.rotation, 'y', -10, 10).name("Rotation Y")
+            this.debugFolder.add(this.model.rotation, 'z', -10, 10).name("Rotation Z")
+
+
+        }
     }
 
     update() {
@@ -30,22 +45,44 @@ export default class Model {
 
     }
     setAnimation() {
-        gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".grid-container",
-                    start: "top top",
-                    end: () => innerHeight * 4,
-                    scrub: true,
-                    pin: ".grid",
-                    anticipatePin: 1
-                }
-            })
-            .set(".gridBlock:not(.centerBlock)", { autoAlpha: 0 })
-            .to(".gridBlock:not(.centerBlock)", { duration: 0.1, autoAlpha: 1 }, 0.001)
-            .from(".gridLayer", {
-                scale: 3.3333,
-                ease: "none",
-            });
+        ScrollTrigger.defaults({
+            immediateRender: false,
+            ease: "power1.inOut",
+        });
+
+
+
+        this.car_anim_tl = gsap.timeline({
+
+            scrollTrigger: {
+                trigger: ".section-two",
+                start: "top top",
+                endTrigger: "bottom",
+                end: "bottom bottom",
+                scrub: 6,
+            }
+
+        });
+
+
+        this.car_anim_tl
+
+
+            .to(this.model.position, { x: 2 })
+
+
+
 
     }
+
+
 }
+
+
+
+// .to(this.camera.position, { x: 0 })
+// .to(this.camera.position, { y: 7.3 })
+// .to(this.camera.position, { y: -2.04 })
+// .to(this.camera.rotation, { x: -1.73 })
+// .to(this.camera.rotation, { y: 0 })
+// .to(this.camera.rotation, { z: 0 })
