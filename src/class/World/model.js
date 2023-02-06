@@ -59,7 +59,7 @@ export default class Model {
                 start: "top top",
                 endTrigger: "bottom",
                 end: "bottom bottom",
-                scrub: 6,
+                scrub: 2,
             }
 
         });
@@ -68,7 +68,12 @@ export default class Model {
         this.car_anim_tl
 
 
-            .to(this.model.position, { x: 2 })
+            .to(this.model.position, { x: 1 })
+            .to(this.model.position, { y: 3 })
+            .to(this.model.position, { z: -0.4 })
+            .to(this.model.rotation, { x: -0.28 })
+            .to(this.model.rotation, { y: 1.59 })
+            .to(this.model.rotation, { z: 0 })
 
 
 
