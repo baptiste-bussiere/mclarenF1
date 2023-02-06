@@ -34,9 +34,11 @@ export default class Resources extends EventEmitter {
         this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader)
         this.loaders.hdrEquirect = new RGBELoader()
         this.loadingManager.onLoad = function() {
-            gsap.to(".root", {
+            gsap.to(".loading", {
                 opacity: 0,
-                display: "none"
+                display: "none",
+                delay: 2,
+
             })
         }
     }
