@@ -33,14 +33,15 @@ export default class Resources extends EventEmitter {
         this.loaders.dracoLoader.setDecoderPath("draco/gltf/")
         this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader)
         this.loaders.hdrEquirect = new RGBELoader()
-        this.loadingManager.onLoad = function() {
-            gsap.to(".loading", {
-                opacity: 0,
-                display: "none",
-                delay: 2,
 
-            })
-        }
+        // this.loadingManager.onLoad = function() {
+        //     gsap.to(".loading", {
+        //         opacity: 0,
+        //         display: "none",
+        //         delay: 2,
+
+        //     })
+        // }
     }
     startLoading() {
         // Load each source
@@ -48,6 +49,8 @@ export default class Resources extends EventEmitter {
             if (source.type === "gltfModel") {
                 this.loaders.gltfLoader.load(source.path, (file) => {
                     this.sourceLoaded(source, file)
+
+
                 })
             } else if (source.type === "hdrFile") {
                 this.loaders.hdrEquirect.load(source.path, (file) => {

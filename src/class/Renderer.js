@@ -15,9 +15,6 @@ export default class Renderer {
         if (this.debug.active) {
             this.debugFolder = this.debug.ui.addFolder("Scene")
             this.debugFolder.addColor(this.instance, 'clearColor').name("Background Color")
-
-
-
         }
     }
 
@@ -36,7 +33,7 @@ export default class Renderer {
         this.instance.toneMappingExposure = 100
         this.instance.shadowMap.enabled = true
 
-        this.instance.setClearColor(0x000000)
+        this.instance.setClearColor(0x0f0f0f)
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(Math.min(this.sizes.pixelRatio, 2))
     }
