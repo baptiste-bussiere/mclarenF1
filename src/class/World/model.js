@@ -34,43 +34,97 @@ export default class Model {
     }
 
     update() {
+        console.log(this.model.rotation);
+        console.log(this.model.position);
 
     }
     setModel() {
         this.model = this.model.scene
         this.scene.add(this.model)
-        this.model.position.set(0, 0, 0)
-        this.model.rotation.set(0, 0, 0)
+        this.model.position.set(0, 0.2, -6.4)
+        this.model.rotation.set(0.6, 0, 0)
         console.log(this.model);
 
     }
     setAnimation() {
-        ScrollTrigger.defaults({
-            immediateRender: false,
-            ease: "power1.inOut",
-        });
+        var sectionDuration = 1;
+        let tau = Math.PI * 2;
+        // gsap.fromTo('canvas', { x: "50%", autoAlpha: 0 }, { duration: 1, x: "0%", autoAlpha: 1 });
 
-
-
-        this.car_anim_tl = gsap.timeline({
-
+        let tl = new gsap.timeline({
+            onUpdate: this.scene.render,
             scrollTrigger: {
-                trigger: ".section-two",
+                trigger: ".content",
+                scrub: 4,
                 start: "top top",
-                endTrigger: "bottom",
-                end: "bottom bottom",
-                scrub: 10,
-            }
-
+                end: "bottom bottom"
+            },
+            defaults: { duration: sectionDuration, ease: 'power2.inOut' }
         });
 
+        let delay = 1;
 
-        this.car_anim_tl
-            .to(this.scene.rotation, { y: 10 })
+
+
+
+        tl.to(this.model.rotation, { x: 0, y: 0, z: 0, ease: 'power1.inOut' }, delay)
+        delay += sectionDuration;
+
+        tl.to(this.model.position, { x: 0, y: -0.1, z: 0, ease: 'power1.inOut' }, delay)
+        tl.to(this.model.rotation, { x: 0, y: 1.6, z: -0.8, ease: 'power1.inOut' }, delay)
+
+
+
+        // tl.to(this.model.rotation, { x: tau * .25, y: 0, z: tau * 0.05, ease: 'power3.inOut' }, delay)
+        // tl.to(this.model.position, { x: 40, y: 0, z: -60, ease: 'power2.inOut' }, delay)
+
+        // delay += sectionDuration;
+
+        // tl.to(this.model.rotation, { x: tau * .2, y: 0, z: -tau * 0.1, ease: 'power3.inOut' }, delay)
+        // tl.to(this.model.position, { x: -40, y: 0, z: -30, ease: 'power2.inOut' }, delay)
+
+        // delay += sectionDuration;
+
+        // tl.to(this.model.rotation, { x: 0, z: 0, y: tau * .25 }, delay)
+        // tl.to(this.model.position, { x: 0, y: -10, z: 50 }, delay)
+
+        // delay += sectionDuration;
+        // delay += sectionDuration;
+
+        // tl.to(this.model.rotation, { x: tau * 0.25, y: tau * .5, z: 0, ease: 'power4.inOut' }, delay)
+        // tl.to(this.model.position, { z: 30, ease: 'power4.inOut' }, delay)
+
+        // delay += sectionDuration;
+
+        // tl.to(this.model.rotation, { x: tau * 0.25, y: tau * .5, z: 0, ease: 'power4.inOut' }, delay)
+        // tl.to(this.model.position, { z: 60, x: 30, ease: 'power4.inOut' }, delay)
+
+        // delay += sectionDuration;
+
+        // tl.to(this.model.rotation, { x: tau * 0.35, y: tau * .75, z: tau * 0.6, ease: 'power4.inOut' }, delay)
+        // tl.to(this.model.position, { z: 100, x: 20, y: 0, ease: 'power4.inOut' }, delay)
+
+        // delay += sectionDuration;
+
+        // tl.to(this.model.rotation, { x: tau * 0.15, y: tau * .85, z: -tau * 0, ease: 'power1.in' }, delay)
+        // tl.to(this.model.position, { z: -150, x: 0, y: 0, ease: 'power1.inOut' }, delay)
+
+        // delay += sectionDuration;
+
+        // tl.to(this.model.rotation, { duration: sectionDuration, x: -tau * 0.05, y: tau, z: -tau * 0.1, ease: 'none' }, delay)
+        // tl.to(this.model.position, { duration: sectionDuration, x: 0, y: 30, z: 320, ease: 'power1.in' }, delay)
+
+
+
+
+
+
+
+
+
     }
-
-
 }
+
 
 
 

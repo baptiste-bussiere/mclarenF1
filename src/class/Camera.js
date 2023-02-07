@@ -34,8 +34,8 @@ export default class Camera {
             0.1,
             300
         )
-        this.instance.position.set(0, 4, -2)
-        this.instance.rotation.set(-1.8, 0, 1.57)
+        this.instance.position.set(0, 0, 0)
+        this.instance.rotation.set(0, 0, 0)
         this.scene.add(this.instance)
         this.pivot = new THREE.Vector3()
         this.instance.getWorldDirection(this.pivot)
