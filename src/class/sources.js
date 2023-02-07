@@ -1,7 +1,7 @@
 export default [{
         name: "mclarenF1",
         type: "gltfModel",
-        path: "models/mc.glb"
+        path: "models/model.glb"
     },
     {
         name: "hdriMap",

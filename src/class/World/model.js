@@ -67,11 +67,11 @@ export default class Model {
 
 
 
-        tl.to(this.model.rotation, { x: 0, y: 0, z: 0, ease: 'power1.inOut' }, delay)
+        tl.from(this.model.rotation, { x: 0, y: 0, z: 0, ease: 'power1.inOut' }, delay)
         delay += sectionDuration;
 
-        tl.to(this.model.position, { x: 0, y: -0.1, z: 0, ease: 'power1.inOut' }, delay)
-        tl.to(this.model.rotation, { x: 0, y: 1.6, z: -0.8, ease: 'power1.inOut' }, delay)
+        tl.from(this.model.position, { x: 0, y: -0.1, z: 0, ease: 'power1.inOut' }, delay)
+        tl.from(this.model.rotation, { x: 0, y: 1.6, z: -0.8, ease: 'power1.inOut' }, delay)
 
 
 
